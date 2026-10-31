@@ -1,0 +1,116 @@
+:root {
+    --bg-deep: #07111e;
+    --bg-shelf: #0f233c;
+    --card-bg: #173559;
+    --text-bright: #e6f0fa;
+    --text-muted: #7fa2c7;
+    --ocean-cyan: #52e5e7;
+    --whale-color: #4da6ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-bright);
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+}
+
+/* APP GENERAL ROW LAYOUT STRUCTURE */
+.app-container { display: flex; width: 100vw; min-height: 100vh; }
+.sidebar {
+    width: 260px; background-color: var(--bg-shelf); padding: 2.5rem 1.5rem;
+    display: flex; flex-direction: column; border-right: 1px solid rgba(82, 229, 231, 0.15);
+}
+.logo { font-size: 1.5rem; font-weight: 800; color: var(--ocean-cyan); margin-bottom: 3rem; }
+.menu { display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
+.menu-item {
+    padding: 14px 20px; border-radius: 16px; cursor: pointer; text-decoration: none;
+    font-weight: 600; color: var(--text-muted); transition: all 0.2s ease;
+    display: flex; align-items: center; gap: 12px;
+}
+.menu-item:hover, .menu-item.active { background-color: rgba(82, 229, 231, 0.15); color: var(--ocean-cyan); }
+.coin-inventory { background: linear-gradient(135deg, #13547a 0%, #80d0c7 100%); padding: 1rem; border-radius: 16px; display: flex; align-items: center; gap: 10px; font-weight: 700; color: #fff; }
+
+.content-viewport { flex-grow: 1; padding: 3rem; background-image: radial-gradient(circle at 80% 20%, #15304b 0%, var(--bg-deep) 60%); }
+.welcome-banner h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+.welcome-banner p { color: var(--text-muted); margin-bottom: 2.5rem; }
+
+/* LAYOUT CARDS */
+.dashboard-grid { display: flex; gap: 20px; margin: 2rem 0; flex-wrap: wrap; }
+.card { background-color: var(--card-bg); border: 1px solid rgba(82, 229, 231, 0.1); border-radius: 20px; padding: 1.8rem; flex: 1; min-width: 240px; }
+.card h3 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.metric { font-size: 2.2rem; font-weight: 800; }
+.text-glow { color: var(--ocean-cyan); text-shadow: 0 0 10px rgba(82, 229, 231, 0.4); }
+.text-cyan { color: var(--ocean-cyan); }
+
+/* ANIMATED WHALE STRUCTURES */
+.whale-aquarium { width: 100%; height: 160px; background-color: rgba(7, 17, 30, 0.4); border-radius: 20px; position: relative; overflow: hidden; margin-bottom: 2rem; border: 1px solid rgba(82, 229, 231, 0.2); }
+.whale-avatar { width: 100px; height: 50px; position: absolute; left: 38%; top: 40%; animation: swimFloat 4s ease-in-out infinite; }
+.whale-body { width: 80px; height: 45px; background-color: var(--whale-color); border-radius: 30px 40px 20px 25px; position: absolute; left: 0; top: 5px; }
+.whale-tail { width: 25px; height: 25px; background-color: var(--whale-color); position: absolute; right: 8px; top: 12px; transform: rotate(45deg); border-radius: 4px; }
+.whale-fin { width: 18px; height: 12px; background-color: #3399ff; position: absolute; left: 35px; top: 32px; border-radius: 0 0 10px 10px; transform: rotate(-10deg); }
+.whale-eye { width: 6px; height: 6px; background-color: #07111e; border-radius: 50%; position: absolute; left: 16px; top: 18px; }
+
+@keyframes swimFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+/* SHOPPING DYNAMICS: TARGET DETECTION ACTION MECHANISM */
+.accessory { display: none; position: absolute; font-size: 1.8rem; z-index: 10; }
+.accessory-tophat { top: -22px; left: 12px; }
+.accessory-sunglasses { top: 6px; left: 2px; font-size: 1.3rem; }
+.accessory-crown { top: -24px; left: 14px; font-size: 1.6rem; }
+
+/* Display chosen hat automatically if active in URL route anchor hash */
+.accessory:target { display: block !important; }
+
+/* BUBBLES Engine */
+.bubble { background-color: rgba(82, 229, 231, 0.2); border-radius: 50%; position: absolute; }
+.bubble-1 { width: 8px; height: 8px; left: 20%; bottom: 10%; animation: riseUp 3s infinite linear; }
+.bubble-2 { width: 12px; height: 12px; left: 75%; bottom: 5%; animation: riseUp 4s infinite linear 1.5s; }
+@keyframes riseUp { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-140px); opacity: 0; } }
+
+/* TIMER SYSTEMS ENGINE CODES */
+.timer-checkbox { display: none; }
+.timer-card { background-color: var(--card-bg); padding: 2.5rem; border-radius: 28px; text-align: center; max-width: 450px; margin: 0 auto; }
+.countdown-display { font-size: 5.5rem; font-weight: 700; margin: 1rem 0; color: var(--ocean-cyan); display: flex; justify-content: center; }
+
+@property --min { syntax: '<integer>'; initial-value: 25; inherits: false; }
+@property --sec { syntax: '<integer>'; initial-value: 0; inherits: false; }
+.minutes::after { counter-reset: min var(--min); content: counter(min, decimal-leading-zero); }
+.seconds::after { counter-reset: sec var(--sec); content: counter(sec, decimal-leading-zero); }
+
+.pause-label { display: none; }
+.timer-checkbox:checked ~ .timer-wrapper .start-label { display: none; }
+.timer-checkbox:checked ~ .timer-wrapper .pause-label { display: inline-block; background-color: var(--bg-deep); }
+.timer-checkbox:checked ~ .timer-wrapper .minutes::after { animation: countMinutes 1500s linear forwards; }
+.timer-checkbox:checked ~ .timer-wrapper .seconds::after { animation: countSeconds 60s linear infinite; }
+
+.timer-checkbox:checked ~ .whale-aquarium .whale-avatar { animation: swimFloat 1.5s ease-in-out infinite; }
+
+@keyframes countMinutes { from { --min: 25; } to { --min: 0; } }
+@keyframes countSeconds { from { --sec: 59; } to { --sec: 0; } }
+
+.controls { display: flex; gap: 15px; justify-content: center; margin-top: 1.5rem; }
+.control-btn { border: none; padding: 14px 28px; border-radius: 14px; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none; }
+.start-label { background-color: var(--ocean-cyan); color: var(--bg-deep); }
+.reset-btn { background-color: transparent; color: var(--text-muted); border: 1px solid rgba(127, 162, 199, 0.3); }
+
+/* SHOP SYSTEM UI PANEL SETUP */
+.shop-grid { display: flex; gap: 20px; margin-top: 2rem; flex-wrap: wrap; }
+.shop-card { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+.shop-item-preview { font-size: 3.5rem; margin-bottom: 0.5rem; transition: transform 0.2s ease; }
+.shop-card:hover .shop-item-preview { transform: scale(1.15); }
+.cost { font-weight: 700; color: var(--ocean-cyan); }
+.buy-btn { background-color: var(--bg-deep); border: 1px solid var(--ocean-cyan); color: var(--ocean-cyan); padding: 10px 20px; border-radius: 12px; font-weight: 600; text-decoration: none; font-size: 0.85rem; width: 100%; display: block; }
+.buy-btn:hover { background-color: var(--ocean-cyan); color: var(--bg-deep); }
+.info-text { margin-top: 1rem; font-size: 0.75rem; color: var(--text-muted); opacity: 0.7; }
+
+
+

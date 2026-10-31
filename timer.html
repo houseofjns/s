@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoralStudy // Focus Tide ⏱️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="route-timer">
+    <div class="app-container">
+        <!-- GLOBAL APP SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">CoralStudy <span>🪸</span></div>
+            <nav class="menu">
+                <a href="home.html" class="menu-item">🏠 Home Reef</a>
+                <a href="timer.html" class="menu-item">⏱️ Focus Tide</a>
+                <a href="shop.html" class="menu-item">🛒 Whale Wardrobe</a>
+                <a href="profile.html" class="menu-item">👤 Diver Profile</a>
+                <a href="inventory.html" class="menu-item active">🎒 Vault Storage</a>
+            </nav>
+            <div class="coin-inventory">
+                <span class="coin-icon">🪙</span> 
+                <span class="coin-amount">15 Sea Coins</span>
+            </div>
+        </aside>
+
+        <!-- MAIN VIEWPORT CONTENT SCREEN -->
+        <main class="content-viewport">
+            <div class="timer-card">
+                
+                <!-- THE LIVE ANIMATED WHALE WORKSPACE ART -->
+                <div class="whale-aquarium">
+                    <div class="whale-avatar">
+                        <div class="whale-body"></div>
+                        <div class="whale-tail"></div>
+                        <div class="whale-fin"></div>
+                        <div class="whale-eye"></div>
+                        
+                        <!-- Accessory slots controlled by matching targets -->
+                        <div class="accessory accessory-tophat" id="wear-hat">🎩</div>
+                        <div class="accessory accessory-sunglasses" id="wear-shades">🕶️</div>
+                        <div class="accessory accessory-crown" id="wear-crown">👑</div>
+                    </div>
+                    <div class="bubble bubble-1"></div>
+                    <div class="bubble bubble-2"></div>
+                </div>
+
+                <h2>Focus Tide</h2>
+                <input type="checkbox" id="timer-toggle" class="timer-checkbox">
+                
+                <div class="timer-wrapper">
+                    <div class="countdown-display">
+                        <span class="minutes"></span>:<span class="seconds"></span>
+                    </div>
+                    
+                    <div class="controls">
+                        <label for="timer-toggle" class="control-btn start-label">Dive In</label>
+                        <label for="timer-toggle" class="control-btn pause-label">Float / Pause</label>
+                        <a href="timer.html" class="control-btn reset-btn">Resurface</a>
+                    </div>
+                </div>
+                <p class="info-text">*Starting the countdown triggers structural swim currents and lets you earn +5 coins!</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

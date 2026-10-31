@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoralStudy // Vault Storage 🎒</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="route-inventory">
+    <div class="app-container">
+        <!-- GLOBAL APP SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">CoralStudy <span>🪸</span></div>
+            <nav class="menu">
+                <a href="home.html" class="menu-item">🏠 Home Reef</a>
+                <a href="timer.html" class="menu-item">⏱️ Focus Tide</a>
+                <a href="shop.html" class="menu-item">🛒 Whale Wardrobe</a>
+                <a href="profile.html" class="menu-item">👤 Diver Profile</a>
+                <a href="inventory.html" class="menu-item active">🎒 Vault Storage</a>
+            </nav>
+            <div class="coin-inventory">
+                <span class="coin-icon">🪙</span> 
+                <span class="coin-amount">15 Sea Coins</span>
+            </div>
+        </aside>
+
+        <!-- MAIN VIEWPORT CONTENT SCREEN -->
+        <main class="content-viewport">
+            <div class="shop-header">
+                <h2>Your Marine Vault</h2>
+                <p>Equip items straight from your collection grid directly onto your focus clock partner.</p>
+            </div>
+            
+            <div class="shop-grid">
+                <!-- COLLECTED ITEM 1 -->
+                <div class="card shop-card">
+                    <div class="shop-item-preview">🎩</div>
+                    <h3>Dapper Top Hat</h3>
+                    <p class="cost" style="color: #2ecc71">✔ Owned</p>
+                    <a href="timer.html#wear-hat" class="buy-btn" style="background-color: var(--ocean-cyan); color: var(--bg-deep)">Equip onto Whale</a>
+                </div>
+
+                <!-- COLLECTED ITEM 2 -->
+                <div class="card shop-card">
+                    <div class="shop-item-preview">🕶️</div>
+                    <h3>Cool Summer Shades</h3>
+                    <p class="cost" style="color: #2ecc71">✔ Owned</p>
+                    <a href="timer.html#wear-shades" class="buy-btn" style="background-color: var(--ocean-cyan); color: var(--bg-deep)">Equip onto Whale</a>
+                </div>
+
+                <!-- UNLOCKED BONUS DECORATION -->
+                <div class="card shop-card" style="opacity: 0.5;">
+                    <div class="shop-item-preview">🐚</div>
+                    <h3>Pink Pearl Shells</h3>
+                    <p class="cost" style="color: var(--text-muted)">Locked</p>
+                    <button class="buy-btn" disabled style="cursor: not-allowed; border-color: var(--text-muted); color: var(--text-muted)">Requires Level 5</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
